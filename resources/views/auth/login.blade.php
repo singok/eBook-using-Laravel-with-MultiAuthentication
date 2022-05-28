@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="{{ url('/') }}">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
             <h1 style="font-size:20px;font-weight:bold;">User Login</h1>
         </x-slot>
 
