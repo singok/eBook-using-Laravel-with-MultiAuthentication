@@ -33,7 +33,7 @@
           </table>
       </div>
       <div class="col-md-4 border border-right-0 shadow p-3 mb-5 bg-white rounded">
-        <form wire:submit.prevent="insert" class="px-3 py-3">
+        <form wire:submit.prevent="insert" id="addBook" class="px-3 py-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Book Category:</label>
             <select wire:model="category" class="form-control" id="exampleFormControlSelect1">
@@ -92,11 +92,20 @@
     @push('script')
     <script>
         $(document).ready(function () {
-            
+          toastr.options = {
+              "progressBar" : true,
+              "positionClass" : "toast-top-right"
+          };
+        });
+
+        // display book insert toaster
+        window.addEventListener('book-insert', event => {
+          toastr.success(event.detail.message);
+          $('#addBook')[0].reset();
         });
 
         $('#add-book-button').on('click', function() {
-            $('#book-add').modal('show');
+          $('#book-add').modal('show');
         });
         
     </script>
