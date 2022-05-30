@@ -17,17 +17,22 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>
-                    <i class="fa-solid fa-download"></i>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash"></i>
-                </td>
-              </tr>
+              @php
+                $count = 1;
+              @endphp
+              @foreach ($dataInfo as $info)
+                <tr>
+                  <th scope="row">{{ $count++ }}</th>
+                  <td>{{ $info->title }}</td>
+                  <td>{{ $info->category }}</td>
+                  <td>{{ $info->description }}</td>
+                  <td>
+                      <i class="fa-solid fa-download"></i>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                      <i class="fa-solid fa-trash"></i>
+                  </td>
+                </tr>
+              @endforeach
               
             </tbody>
           </table>

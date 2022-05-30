@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('cover_image');
             $table->string('file');
+            $table->string('user');
             $table->timestamps();
         });
     }

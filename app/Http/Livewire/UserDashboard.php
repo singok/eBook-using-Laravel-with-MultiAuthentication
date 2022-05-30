@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Books;
+use Auth;
 class UserDashboard extends Component
 {
     use WithFileUploads;
@@ -38,13 +39,15 @@ class UserDashboard extends Component
             "title" => $this->title,
             "description" => $this->description,
             "cover_image" => $coverName,
-            "file" => $bookName
+            "file" => $bookName,
+            "user" => Auth::user()->email
         ]);
         $this->dispatchBrowserEvent('book-insert', ['message' => 'Book Inserted Successfully !!!']);
     }
 
     public function render()
     {
-        return view('livewire.user-dashboard');
+        $data = Books::all();
+        return view('livewire.user-dashboard', ['dataInfo' => $data]);
     }
 }
