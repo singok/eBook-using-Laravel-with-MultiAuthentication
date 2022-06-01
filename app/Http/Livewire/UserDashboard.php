@@ -41,8 +41,8 @@ class UserDashboard extends Component
         $cname = $this->coverImage->getClientOriginalName();
         $coverName = time()."-".$cname;
 
-        $this->book->storeAs('books', $bookName);
-        $this->coverImage->storeAs('cover-image', $coverName);
+        $this->book->storeAs('public/books', $bookName);
+        $this->coverImage->storeAs('public/cover-image', $coverName);
 
         Books::insert([
             "category" => $this->category,
@@ -52,7 +52,6 @@ class UserDashboard extends Component
             "file" => $bookName,
             "user" => $this->userEmail
         ]);
-        $this->reset();
         $this->dispatchBrowserEvent('book-insert', ['message' => 'Book Inserted Successfully !!!']);
     }
     
@@ -72,7 +71,7 @@ class UserDashboard extends Component
         Books::find($this->deleteId)->delete();
         
         // remove files from storage
-        Storage::delete(['cover-image/'.$this->deleteCover, 'books/'.$this->deleteBook]);
+        Storage::delete(['public/cover-image/'.$this->deleteCover, 'public/books/'.$this->deleteBook]);
 
         $this->dispatchBrowserEvent('delete-success', [
                             'message' => 'Book deleted successfully !!!']);
@@ -81,7 +80,7 @@ class UserDashboard extends Component
     // book download
     public function export($book, $title)
     {
-        $path = storage_path('app/books/'.$book);
+        $path = storage_path('public/books/'.$book);
         $fileName = str_replace(' ', '-', $title).".pdf";
         return response()->download($path, $fileName);
     }

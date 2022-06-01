@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 /*----------- Admin Begin ------------------*/
 Route::prefix('admin')->group(function () {
@@ -13,9 +14,7 @@ Route::prefix('admin')->group(function () {
 });
 /*----------- Admin End --------------------*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
