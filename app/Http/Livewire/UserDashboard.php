@@ -41,8 +41,8 @@ class UserDashboard extends Component
         $cname = $this->coverImage->getClientOriginalName();
         $coverName = time()."-".$cname;
 
-        $this->book->storeAs('public/books', $bookName);
-        $this->coverImage->storeAs('public/cover-image', $coverName);
+        $this->book->storeAs('books', $bookName);
+        $this->coverImage->storeAs('cover-image', $coverName);
 
         Books::insert([
             "category" => $this->category,
@@ -80,7 +80,7 @@ class UserDashboard extends Component
     // book download
     public function export($book, $title)
     {
-        $path = storage_path('public/books/'.$book);
+        $path = asset('books/'.$book);
         $fileName = str_replace(' ', '-', $title).".pdf";
         return response()->download($path, $fileName);
     }

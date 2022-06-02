@@ -457,20 +457,11 @@
         </div>
     </nav>
     <div class="container">
-
-      <div class="row mt-4">
-        <div class="col">
-            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 21rem;">
-                <img class="card-img-top" src="{{ asset('storage/cover-image/1654015203-face1.jpg') }}" alt="Card image cap">
-            </div>
-        </div>
-      </div>
-
         <div class="row mt-4">
             @foreach ($dataInfo as $info)
                 <div class="col">
                     <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 21rem;">
-                        {{-- <img class="card-img-top" src="{{ storage_path('app\cover-image\\'.$info->cover_image) }}" height="100px" width="180px" alt="Card image cap"> --}}
+                        <img class="card-img-top" src="{{ asset('/storage/cover-image/'.$info->cover_image) }}" height="160px" width="180px" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ $info->title }}</h5>
                             <p class="card-text">{{ $info->description }}</p>
