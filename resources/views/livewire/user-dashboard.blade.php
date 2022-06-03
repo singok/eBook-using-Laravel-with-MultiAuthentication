@@ -117,11 +117,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-<<<<<<< HEAD
                     Do you want to delete book detail ?
-=======
-                    Are you sure want to delete book details ?
->>>>>>> 048da3c3e1aeb2ddd24bb0429c2a2faa554200be
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -131,11 +127,7 @@
         </div>
     </div>
 
-<<<<<<< HEAD
     <!-- update-Modal -->
-=======
-    <!-- update-Moal -->
->>>>>>> 048da3c3e1aeb2ddd24bb0429c2a2faa554200be
     <div class="modal fade" id="editModalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

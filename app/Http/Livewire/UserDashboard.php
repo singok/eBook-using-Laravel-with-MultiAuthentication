@@ -41,10 +41,7 @@ class UserDashboard extends Component
         $cname = $this->coverImage->getClientOriginalName();
         $coverName = time()."-".$cname;
 
-        $this->book->storeAs('books', $bookName);
-        $this->coverImage->storeAs('cover-image', $coverName);
-
-        Books::insert([
+        $feedback = Books::insert([
             "category" => $this->category,
             "title" => $this->title,
             "description" => $this->description,
@@ -52,7 +49,21 @@ class UserDashboard extends Component
             "file" => $bookName,
             "user" => $this->userEmail
         ]);
-        $this->dispatchBrowserEvent('book-insert', ['message' => 'Book Inserted Successfully !!!']);
+
+        if($feedback) {
+
+            $this->book->storeAs('books', $bookName);
+            $this->coverImage->storeAs('cover-image', $coverName);
+
+            $this->category = null;
+            $this->title = null;
+            $this->description = null;
+            $this->book = null;
+            $this->coverImage = null; 
+
+            $this->dispatchBrowserEvent('book-insert', ['message' => 'Book Inserted Successfully !!!']);
+        } 
+        
     }
     
     // show delete modal
@@ -71,7 +82,7 @@ class UserDashboard extends Component
         Books::find($this->deleteId)->delete();
         
         // remove files from storage
-        Storage::delete(['public/cover-image/'.$this->deleteCover, 'public/books/'.$this->deleteBook]);
+        Storage::delete(['cover-image/'.$this->deleteCover, 'books/'.$this->deleteBook]);
 
         $this->dispatchBrowserEvent('delete-success', [
                             'message' => 'Book deleted successfully !!!']);
