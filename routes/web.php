@@ -19,7 +19,7 @@ Route::get('/download/{book}', [HomeController::class, 'download'])->name('downl
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 
 Route::get('/download/book/{book}', [HomeController::class, 'download'])->name('download-book');
 require __DIR__.'/auth.php';
