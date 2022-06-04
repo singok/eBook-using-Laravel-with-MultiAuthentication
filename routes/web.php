@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function () {
 });
 /*----------- Admin End --------------------*/
 
-Route::get('/{category?}', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/download/{book}', [HomeController::class, 'download'])->name('downloadBook');
 
 Route::get('/dashboard', function () {
