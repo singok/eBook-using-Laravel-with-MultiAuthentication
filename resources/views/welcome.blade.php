@@ -42,7 +42,7 @@
         :after,
         :before {
             box-sizing: border-box;
-            border: 0 solid #e2e8f0
+            border: 0 solid {{ url('/') }}e2e8f0
         }
 
         a {
@@ -63,19 +63,19 @@
 
         .bg-white {
             --bg-opacity: 1;
-            background-color: #fff;
+            background-color: {{ url('/') }}fff;
             background-color: rgba(255, 255, 255, var(--bg-opacity))
         }
 
         .bg-gray-100 {
             --bg-opacity: 1;
-            background-color: #f7fafc;
+            background-color: {{ url('/') }}f7fafc;
             background-color: rgba(247, 250, 252, var(--bg-opacity))
         }
 
         .border-gray-200 {
             --border-opacity: 1;
-            border-color: #edf2f7;
+            border-color: {{ url('/') }}edf2f7;
             border-color: rgba(237, 242, 247, var(--border-opacity))
         }
 
@@ -228,43 +228,43 @@
 
         .text-gray-200 {
             --text-opacity: 1;
-            color: #edf2f7;
+            color: {{ url('/') }}edf2f7;
             color: rgba(237, 242, 247, var(--text-opacity))
         }
 
         .text-gray-300 {
             --text-opacity: 1;
-            color: #e2e8f0;
+            color: {{ url('/') }}e2e8f0;
             color: rgba(226, 232, 240, var(--text-opacity))
         }
 
         .text-gray-400 {
             --text-opacity: 1;
-            color: #cbd5e0;
+            color: {{ url('/') }}cbd5e0;
             color: rgba(203, 213, 224, var(--text-opacity))
         }
 
         .text-gray-500 {
             --text-opacity: 1;
-            color: #a0aec0;
+            color: {{ url('/') }}a0aec0;
             color: rgba(160, 174, 192, var(--text-opacity))
         }
 
         .text-gray-600 {
             --text-opacity: 1;
-            color: #718096;
+            color: {{ url('/') }}718096;
             color: rgba(113, 128, 150, var(--text-opacity))
         }
 
         .text-gray-700 {
             --text-opacity: 1;
-            color: #4a5568;
+            color: {{ url('/') }}4a5568;
             color: rgba(74, 85, 104, var(--text-opacity))
         }
 
         .text-gray-900 {
             --text-opacity: 1;
-            color: #1a202c;
+            color: {{ url('/') }}1a202c;
             color: rgba(26, 32, 44, var(--text-opacity))
         }
 
@@ -364,37 +364,37 @@
         @media (prefers-color-scheme:dark) {
             .dark\:bg-gray-800 {
                 --bg-opacity: 1;
-                background-color: #2d3748;
+                background-color: {{ url('/') }}2d3748;
                 background-color: rgba(45, 55, 72, var(--bg-opacity))
             }
 
             .dark\:bg-gray-900 {
                 --bg-opacity: 1;
-                background-color: #1a202c;
+                background-color: {{ url('/') }}1a202c;
                 background-color: rgba(26, 32, 44, var(--bg-opacity))
             }
 
             .dark\:border-gray-700 {
                 --border-opacity: 1;
-                border-color: #4a5568;
+                border-color: {{ url('/') }}4a5568;
                 border-color: rgba(74, 85, 104, var(--border-opacity))
             }
 
             .dark\:text-white {
                 --text-opacity: 1;
-                color: #fff;
+                color: {{ url('/') }}fff;
                 color: rgba(255, 255, 255, var(--text-opacity))
             }
 
             .dark\:text-gray-400 {
                 --text-opacity: 1;
-                color: #cbd5e0;
+                color: {{ url('/') }}cbd5e0;
                 color: rgba(203, 213, 224, var(--text-opacity))
             }
 
             .dark\:text-gray-500 {
                 --tw-text-opacity: 1;
-                color: #6b7280;
+                color: {{ url('/') }}6b7280;
                 color: rgba(107, 114, 128, var(--tw-text-opacity))
             }
         }
@@ -416,20 +416,23 @@
             <img src="{{ asset('logo.png') }}" width="30" height="30" alt="">
         </a>
         <a class="navbar-brand" href="{{ url('/') }}">eBooks</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="{{ url('/') }}navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('/') }}">All</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
@@ -447,9 +450,13 @@
                                 class="btn btn-outline-success my-2 my-sm-0">Login</button></a>
 
                         @if (Route::has('register'))
+<<<<<<< HEAD
                             <a href="{{ route('register') }}"
                                 class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"><button
                                     class="btn btn-outline-success my-2 my-sm-0">register</button></a>
+=======
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-light">register</a>
+>>>>>>> Home-branch
                         @endif
                     @endauth
                 @endif
@@ -461,11 +468,13 @@
             @foreach ($dataInfo as $info)
                 <div class="col">
                     <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 21rem;">
-                        <img class="card-img-top" src="{{ asset('/storage/cover-image/'.$info->cover_image) }}" height="160px" width="180px" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset('/storage/cover-image/' . $info->cover_image) }}"
+                            height="160px" width="180px" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ $info->title }}</h5>
                             <p class="card-text">{{ $info->description }}</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="{{ route('download-book', ['book' => $info->file]) }}"
+                                class="btn btn-primary">Download</a>
                         </div>
                     </div>
                 </div>
