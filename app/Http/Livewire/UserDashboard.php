@@ -91,9 +91,8 @@ class UserDashboard extends Component
     // book download
     public function export($book, $title)
     {
-        $path = asset('books/'.$book);
         $fileName = str_replace(' ', '-', $title).".pdf";
-        return response()->download($path, $fileName);
+        return Storage::download('books/'.$book, $fileName);
     }
 
     // edit method

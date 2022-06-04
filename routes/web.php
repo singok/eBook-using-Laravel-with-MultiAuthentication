@@ -20,4 +20,5 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/download/book/{book}', [HomeController::class, 'download'])->name('download-book');
 require __DIR__.'/auth.php';
